@@ -5,7 +5,7 @@ import java.time.LocalDate;
 public class DataVerificator {
 
     public static boolean isYearlyInterestValid(double interestRate) {
-        return (interestRate >= 0);
+        return (interestRate > 0);
     }
 
     public static boolean isNumberOfInstallmentsValid(int installments) {
@@ -17,7 +17,7 @@ public class DataVerificator {
     }
 
     public static boolean isDownPaymentValid(double downPayment, double goodsValue) {
-        return (downPayment > 0 && downPayment < goodsValue / 2);
+        return (downPayment > 0 && downPayment <= goodsValue / 2);
     }
 
     public static boolean isDateOfFIrstPaymentValid(LocalDate date) {

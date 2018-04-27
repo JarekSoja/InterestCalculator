@@ -7,6 +7,5 @@ public class Main {
         Commander commander = new ConsoleCommander();
         commander.runApp();
 
-
     }
 }

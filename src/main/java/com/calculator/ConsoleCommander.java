@@ -18,14 +18,12 @@ class ConsoleCommander extends Commander {
     }
 
     void runApp() {
+        setDateOfFirstPayment();
         setYearlyInterestRate();
         setNumberOfInstallments();
-        setDateOfFirstPayment();
         setValueOfGoods();
         setDownPayment();
         reader.close();
-        System.out.println((Math.pow(calculatorDto.getQConstant(), calculatorDto.getNumberOfInstallments())));
-
         calculations.runCalculations();
         printer.returnSummary();
     }
@@ -35,7 +33,6 @@ class ConsoleCommander extends Commander {
             System.out.println("Please enter yearly interest rate: ");
             String temp = reader.nextLine();
             double result = Double.parseDouble(temp);
-            //double result = Double.parseDouble(reader.nextLine());
             if (DataVerificator.isYearlyInterestValid(result)) {
                 calculatorDto.setInterestRate(result);
                 break;
@@ -61,8 +58,7 @@ class ConsoleCommander extends Commander {
         while (true) {
             System.out.println("Please enter total value of goods: ");
             String temp = reader.nextLine();
-            int result = Integer.parseInt(temp);
-            //double result = Double.parseDouble(reader.nextLine());
+            double result = Double.parseDouble(temp);
             if (DataVerificator.isValueOfGoodsValid(result)) {
                 calculatorDto.setValueOfGoods(result);
                 break;
@@ -76,7 +72,6 @@ class ConsoleCommander extends Commander {
             System.out.println("Please enter your down payment: ");
             String temp = reader.nextLine();
             double result = Double.parseDouble(temp);
-            //double result = Double.parseDouble(reader.nextLine());
             if (DataVerificator.isDownPaymentValid(result, calculatorDto.getValueOfGoods())) {
                 calculatorDto.setDownPayment(result);
                 break;

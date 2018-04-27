@@ -5,7 +5,7 @@ import java.time.LocalDate;
 public class SingleRate {
 
     private LocalDate dayOfPayment;
-    private double singlePayment;
+    private double singleInstallment;
     private double interestPart;
     private double capitalPart;
     private double loanLeftToPay;
@@ -18,8 +18,8 @@ public class SingleRate {
         this.dayOfPayment = dayOfPayment;
     }
 
-    void setSinglePayment(double totalPayment) {
-        this.singlePayment = totalPayment;
+    void setSingleInstallment(double totalPayment) {
+        this.singleInstallment = totalPayment;
     }
 
     double getInterestPayment() {
@@ -28,6 +28,10 @@ public class SingleRate {
 
     void setInterestPayment(double interestPayment) {
         this.interestPart = interestPayment;
+    }
+
+    public double getSingleInstallment() {
+        return singleInstallment;
     }
 
     double getCapitalPayment() {
@@ -43,14 +47,18 @@ public class SingleRate {
     }
 
     void setLoanLeftToToPay(double loanLeftToPay) {
-        this.loanLeftToPay = loanLeftToPay;
+        if (loanLeftToPay >= 0) {
+            this.loanLeftToPay = loanLeftToPay;
+        } else {
+            loanLeftToPay = 0;
+        }
     }
 
     @Override
     public String toString() {
-        return "Date of payment: " + dayOfPayment + "\n To pay: " + singlePayment + "\n " +
+        return "Date of payment: " + dayOfPayment + "\n To pay: " + singleInstallment + "\n " +
                 "Including interest: " + interestPart + " \n and capital part: " + capitalPart +
-                "\n Left to repay, after adding interests and subtracting current installment: \n " + loanLeftToPay;
+                "\n Left to pay: \n " + loanLeftToPay;
     }
 
 }

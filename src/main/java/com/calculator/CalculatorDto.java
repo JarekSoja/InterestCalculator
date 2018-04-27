@@ -37,6 +37,10 @@ public class CalculatorDto {
         this.interestRate = interestRate / 100;
     }
 
+    public double getInterestRate() {
+        return interestRate;
+    }
+
     int getNumberOfInstallments() {
         return numberOfInstallments;
     }
@@ -87,10 +91,6 @@ public class CalculatorDto {
 
     List<SingleRate> getCreditSchedule() {
         return creditSchedule;
-    }
-
-    void setCreditSchedule(List<SingleRate> creditSchedule) {
-        this.creditSchedule = creditSchedule;
     }
 
     double getAmountDueToPay() {
